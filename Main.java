@@ -31,7 +31,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         File input = new File("amazon-product-data.csv");
         Scanner reader = new Scanner(input);
-        btree Tree = new btree(10);
+        BTree Tree = new BTree(10);
         while (reader.hasNextLine()) {
             String product = reader.nextLine();
             String[] parts = product.split(",");
