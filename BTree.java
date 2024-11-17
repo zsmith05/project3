@@ -1,4 +1,4 @@
-public class btree {
+public class BTree {
     private static class Node{
         int[] keys;
         int m;
@@ -72,11 +72,30 @@ public class btree {
         }
     }
 
+    public Node search(int key) {
+        int i = 0;
+
+        while (i < n && key > keys[i]) {
+                i++;
+        }
+
+        // If the key is found at this node, return this node
+        if (i < n && keys[i] == key) {
+                return this;
+        }
+
+        if (isLeaf) {
+                return null;
+        }
+
+        return child[i].search(key);
+ }
+
     private Node root;
     private int m;
 
 
-    public btree(int m) {
+    public BTree(int m) {
         this.root = null;
         this.m = m;
     }
@@ -98,6 +117,13 @@ public class btree {
                 root.insertNonFull(key);
             }
         }
+    }
+
+    public Node search(int key) {
+        if (root == null) {
+            return null;
+        }
+        return root.search(key);
     }
 
 
