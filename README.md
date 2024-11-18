@@ -30,6 +30,8 @@ n
 
 Process finished with exit code 0
 
+Analysis:  The tree becomes balanced by when a node becomes full (2𝑚−1 products), it is split into two nodes, with the middle product promoted to the parent. This ensures that no node ever has more than 2𝑚−1 products, keeping the tree balanced. When the m was smaller (ex: 2) The insertion process would take alot longer, but the search process would be faster. When m was bigger (ex: 30) The insertion process would speed up, but the search process would be slower. We decided to prioritze the time performace of the insertion over search because even when the search process would be slower, it was still relativly quick ex: (m= 30, search would take an average of 40,000 nanoseconds). This led us to choose the number 30 for m.
+
 
 
 
