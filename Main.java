@@ -8,10 +8,11 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        File input = new File("C:\\Users\\zions\\IdeaProjects\\project3\\amazon_product_data_cleaned.csv");
+        File input = new File("amazon_product_data_cleaned.csv");
         Scanner reader = new Scanner(input);
-        btree Tree = new btree(2);
+        btree Tree = new btree(30);
         int i = 0;
+        double start1 = System.currentTimeMillis();
         while (reader.hasNextLine()) {
             String product = reader.nextLine();
             String[] parts = product.split(",");
@@ -30,9 +31,10 @@ public class Main {
             Tree.insert(p);
             i++;
 
-            reader.close();
-
         }
+        double end1 = System.currentTimeMillis();
+        double fullTime = end1 - start1;
+
         // Edge case, product id already exists
         btree.Product copy = new btree.Product("bc178f33a04dbccefa95b165f8b56830", "Barbie house", "Toys", "$20.99");
         Tree.insert(copy);
@@ -41,18 +43,21 @@ public class Main {
         Tree.insert(item);
 
 
-        System.out.println("Finished inserting");
+        System.out.println("Finished inserting. Insertion took: " + fullTime + " milliseconds.");
         Scanner scan = new Scanner(System.in);
 
         boolean query = true;
         do {
             System.out.println("Enter product id to search: ");
             String search = scan.nextLine();
+            double begin = System.nanoTime();
             btree.Product found = Tree.search(search);
-
+            double end2 = System.nanoTime();
+            double fullTime2 = end2 - begin;
 
             if (found != null) {
                 System.out.println("Found product: " + found);
+                System.out.println("Search took: " + fullTime2 + " nanoseconds.");
             } else {
                 System.out.println("Product not found.");
             }
@@ -65,8 +70,7 @@ public class Main {
 
         }while(query);
 
-        scan.close();
-        
+
 
     }
 }
