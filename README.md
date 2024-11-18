@@ -4,9 +4,7 @@ Zion Smith 49230889
 Ivana Ogunbor 49053231
 
 Results:
-// after trying to insert a product with a duplicate id:  
 A product with this ID already exists.
-// after inserting all products into the tree: 
 Finished inserting. Insertion took: 233.0 milliseconds.
 
 Enter product id to search: 
