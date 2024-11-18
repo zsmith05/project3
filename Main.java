@@ -30,6 +30,7 @@ public class Main {
             Tree.insert(p);
             i++;
 
+            reader.close();
 
         }
         // Edge case, product id already exists
@@ -64,7 +65,8 @@ public class Main {
 
         }while(query);
 
-
+        scan.close();
+        
 
     }
 }
